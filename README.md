@@ -16,3 +16,8 @@ This is an iOS app for private tracker HD-Space built in Swift
 ---
 # Known Issues
 - ~~App crashes when you have 0 active torrents~~ (Fixed)
+
+---
+# Screenshots
+<div align="center"><img src="media/Screenshot1.jpg" width="512"></div>
+<div align="center"><img src="media/Screenshot2.jpg" width="512"></div>
