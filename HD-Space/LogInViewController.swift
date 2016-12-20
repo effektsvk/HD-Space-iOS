@@ -30,7 +30,6 @@ class LogInViewController: UIViewController {
                 if let unwrappedData = data {
                     
                     self.dataString = NSString(data: unwrappedData, encoding: String.Encoding.utf8.rawValue)!
-                    print(self.dataString)
                     
                     if self.dataString.contains("Welcome back") {
                         //self.timer.invalidate()
@@ -77,7 +76,6 @@ class LogInViewController: UIViewController {
                 if let unwrappedData = data {
                     
                     self.dataString = NSString(data: unwrappedData, encoding: String.Encoding.utf8.rawValue)!
-                    print(self.dataString)
                     
                 }
                 

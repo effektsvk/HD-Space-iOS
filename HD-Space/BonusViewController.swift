@@ -85,11 +85,7 @@ class BonusViewController: UITableViewController {
                 
             }
             
-            print(sender)
-            
             task.resume()
-            print(urlString)
-            
         }
         
         let sureAlert = UIAlertController(title: "Buying \(rewards[indexPath.row])", message: "Are you sure you want to buy \(rewards[indexPath.row])?", preferredStyle: .alert)
