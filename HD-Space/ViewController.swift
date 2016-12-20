@@ -204,51 +204,61 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                     }
                     
                     // fetching active torrents
-                    // UP
                     
-                    stringSeparator = "<font color=\"green\">"
-                    
-                    if let ratioArray = dataString?.components(separatedBy: stringSeparator) {
-                        
-                        if ratioArray.count > 0 {
+                    // checking if there are active torrents
+                    if let isNotActive = dataString?.contains("Active Torrents : <font color=\"red\"><b>NONE !! ") {
+                        if isNotActive {
+                            self.activeUp = 0
+                            self.activeDown = 0
+                        } else {
                             
-                            stringSeparator = "</font>"
+                            // UP
                             
-                            var newContentArray = ratioArray[1].components(separatedBy: stringSeparator)
+                            stringSeparator = "<font color=\"green\">"
                             
-                            if newContentArray.count > 0 {
+                            if let activeUpArray = dataString?.components(separatedBy: stringSeparator) {
                                 
-                                if let unwrappedActiveUp = Int(newContentArray[0]) {
-                                    if unwrappedActiveUp != 0 {
-                                        self.activeUp = unwrappedActiveUp
+                                if activeUpArray.count > 0 {
+                                    
+                                    stringSeparator = "</font>"
+                                    
+                                    var newContentArray = activeUpArray[1].components(separatedBy: stringSeparator)
+                                    
+                                    if newContentArray.count > 0 {
+                                        
+                                        if let unwrappedActiveUp = Int(newContentArray[0]) {
+                                            if unwrappedActiveUp != 0 {
+                                                self.activeUp = unwrappedActiveUp
+                                            }
+                                        }
+                                        
                                     }
                                 }
-                                
                             }
-                        }
-                    }
-                    
-                    stringSeparator = "<font color=\"red\">"
-                    
-                    if let ratioArray = dataString?.components(separatedBy: stringSeparator) {
-                        
-                        if ratioArray.count > 0 {
                             
-                            stringSeparator = "</font>"
+                            stringSeparator = "<font color=\"red\">"
                             
-                            var newContentArray = ratioArray[1].components(separatedBy: stringSeparator)
-                            
-                            if newContentArray.count > 0 {
+                            if let activeDownArray = dataString?.components(separatedBy: stringSeparator) {
                                 
-                                if let unwrappedActiveDown = Int(newContentArray[0]) {
-                                    self.activeDown = unwrappedActiveDown
+                                if activeDownArray.count > 0 {
+                                    
+                                    stringSeparator = "</font>"
+                                    
+                                    var newContentArray = activeDownArray[1].components(separatedBy: stringSeparator)
+                                    
+                                    if newContentArray.count > 0 {
+                                        
+                                        if let unwrappedActiveDown = Int(newContentArray[0]) {
+                                            self.activeDown = unwrappedActiveDown
+                                        }
+                                        
+                                    }
                                 }
-                                
                             }
                         }
                     }
                     
-                    // fetching bonus for badge
+                    // fetching bonus for the badge
                     
                     stringSeparator = "Bonus: "
                     
