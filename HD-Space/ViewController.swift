@@ -295,11 +295,11 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                 self.downloadLabel.isHidden = false
                 self.ratioLabel.isHidden = false
                 self.statsWheel.isHidden = false
-                if let unwrappedUpType = UserDefaults.standard.string(forKey: "upByteType") {
-                    self.downloadLabel.text = "\(self.download) \(unwrappedUpType)"
-                }
                 if let unwrappedDownType = UserDefaults.standard.string(forKey: "downByteType") {
-                    self.uploadLabel.text = "\(self.upload) \(unwrappedDownType)"
+                    self.downloadLabel.text = "\(self.download) \(unwrappedDownType)"
+                }
+                if let unwrappedUpType = UserDefaults.standard.string(forKey: "upByteType") {
+                    self.uploadLabel.text = "\(self.upload) \(unwrappedUpType)"
                 }
                 
                 self.statsWheel.maxValue = CGFloat(self.download + (self.download * self.ratio))
