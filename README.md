@@ -18,11 +18,11 @@ This is an iOS app for private tracker HD-Space built in Swift
 [**Download**](https://github.com/effektsvk/HD-Space-iOS/releases/latest/) and install via iTunes.
 
 ## Installing from Cydia Repo
-1. Add this repo:
+- Add this repo:
 ```
 http://hd-space.yourepo.com/
 ```
-2. Search for **HD-Space**
+- Search for **HD-Space**
 
 ---
 # Known Issues
