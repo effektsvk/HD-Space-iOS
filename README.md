@@ -17,11 +17,20 @@ This is an iOS app for private tracker HD-Space built in Swift
 ## iTunes Installation
 [**Download**](https://github.com/effektsvk/HD-Space-iOS/releases/latest/) and install via iTunes.
 
+## Installing from Cydia Repo
+1. Add this repo:
+```
+http://hd-space.yourepo.com/
+```
+2. Search for **HD-Space**
+
 ---
 # Known Issues
 - ~~App crashes when you have 0 active torrents~~ (Fixed)
+- App crashes when HD-Space is down
+- ~~App doesn't update upload and download stats when there's a comma (e.g. 1,004.20 GB)~~ (Fixed)
 
 ---
 # Screenshots
-<div align="center"><img src="media/Screenshot1.jpg" width="512"></div>
-<div align="center"><img src="media/Screenshot2.jpg" width="512"></div>
+<div align="center"><img src="media/Screenshot1.png" width="512"></div>
+<div align="center"><img src="media/Screenshot2.png" width="512"></div>
