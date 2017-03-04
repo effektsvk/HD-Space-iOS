@@ -23,10 +23,10 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var bonus = UserDefaults.standard.double(forKey: "bonus")
     let downloadColor = #colorLiteral(red: 1, green: 0.3300932944, blue: 0.2421161532, alpha: 1)
     let uploadColor = #colorLiteral(red: 0.3430494666, green: 0.8636034131, blue: 0.467017293, alpha: 1)
+    var didLogIn = false
     
     @IBOutlet weak var scrollView: UIScrollView!
     var refreshControl = UIRefreshControl()
-    
     @IBOutlet weak var navbarLabel: UINavigationItem!
     @IBOutlet weak var statsWheel: UICircularProgressRingView!
     @IBOutlet weak var uploadLabel: UILabel!
@@ -36,19 +36,24 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var activeDownLabel: UILabel!
     @IBAction func logOut(_ sender: Any) {
         
-        URLCache.shared.removeAllCachedResponses()
-        if let cookies = HTTPCookieStorage.shared.cookies {
-            for cookie in cookies {
-                HTTPCookieStorage.shared.deleteCookie(cookie)
-            }
-        }
+        clearCache()
         UserDefaults.standard.set(false, forKey: "isLoggedIn")
         checkLogIn()
         
     }
     
     func logIn() {
-        performSegue(withIdentifier: "logInSegue", sender: view)
+        //performSegue(withIdentifier: "logInSegue", sender: view)
+        performSegue(withIdentifier: "logInSegue", sender: nil)
+    }
+    
+    func clearCache() {
+        URLCache.shared.removeAllCachedResponses()
+        if let cookies = HTTPCookieStorage.shared.cookies {
+            for cookie in cookies {
+                HTTPCookieStorage.shared.deleteCookie(cookie)
+            }
+        }
     }
     
     func checkLogIn() {
@@ -65,28 +70,37 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                         UserDefaults.standard.set(true, forKey: "isLoggedIn")
                     } else {
                         UserDefaults.standard.set(false, forKey: "isLoggedIn")
-                        self.logIn()
                     }
                 }
             }
+            DispatchQueue.main.sync(execute: {
+                if !UserDefaults.standard.bool(forKey: "isLoggedIn") {
+                    self.clearCache()
+                    self.logIn()
+                }
+            })
+            
+            
         }
         
-        if !UserDefaults.standard.bool(forKey: "isLoggedIn") {
-            logIn()
-        } else {
-            task.resume()
-            refreshData()
-        }
+        task.resume()
+        /*
+         if !UserDefaults.standard.bool(forKey: "isLoggedIn") {
+         self.logIn()
+         } else {
+         self.refreshData()
+         }
+         */
     }
     
     func refreshData() {
         /*
-        self.uploadLabel.isHidden = true
-        self.downloadLabel.isHidden = true
-        self.ratioLabel.isHidden = true
-        self.statsWheel.isHidden = true
-        self.statsWheel.setProgress(value: 0, animationDuration: 0)
- */
+         self.uploadLabel.isHidden = true
+         self.downloadLabel.isHidden = true
+         self.ratioLabel.isHidden = true
+         self.statsWheel.isHidden = true
+         self.statsWheel.setProgress(value: 0, animationDuration: 0)
+         */
         
         let url = URL(string: "https://hd-space.org/index.php")!
         let request = NSMutableURLRequest(url: url)
@@ -103,8 +117,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                     let dataString = NSString(data: unwrappedData, encoding: String.Encoding.utf8.rawValue)
                     
                     // fetching username
-                    
-                    
                     
                     var stringSeparator = "Welcome back <span"
                     
@@ -143,13 +155,12 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                             
                             if newContentArray.count > 0 {
                                 
-                                if let unwrappedUpload = Double(newContentArray[0]) {
+                                if let unwrappedUpload = Double(newContentArray[0].replacingOccurrences(of: ",", with: "")) {
                                     self.upload = unwrappedUpload
                                 }
                                 
                                 let upType = newContentArray[1].components(separatedBy: "</td>")
                                 self.upByteType = String(upType[0])
-                                
                             }
                         }
                     }
@@ -157,24 +168,16 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                     // fetching download
                     
                     stringSeparator = "align=\"center\"> DL:  "
-                    
                     if let downloadArray = dataString?.components(separatedBy: stringSeparator) {
-                        
                         if downloadArray.count > 0 {
-                            
                             stringSeparator = " "
-                            
                             var newContentArray = downloadArray[1].components(separatedBy: stringSeparator)
-                            
                             if newContentArray.count > 0 {
-                                
-                                if let unwrappedDownload = Double(newContentArray[0]) {
+                                if let unwrappedDownload = Double(newContentArray[0].replacingOccurrences(of: ",", with: "")) {
                                     self.download = unwrappedDownload
                                 }
-                                
                                 let downType = newContentArray[1].components(separatedBy: "</td>")
                                 self.downByteType = String(downType[0])
-                                
                             }
                         }
                     }
@@ -198,7 +201,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                                 } else {
                                     self.ratio = 0.0
                                 }
-                                
                             }
                         }
                     }
@@ -231,7 +233,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                                                 self.activeUp = unwrappedActiveUp
                                             }
                                         }
-                                        
                                     }
                                 }
                             }
@@ -251,7 +252,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                                         if let unwrappedActiveDown = Int(newContentArray[0]) {
                                             self.activeDown = unwrappedActiveDown
                                         }
-                                        
                                     }
                                 }
                             }
@@ -277,16 +277,11 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                                     if let clearBonus = Double(unwrappedBonus.replacingOccurrences(of: ",", with: "")) {
                                         self.bonus = clearBonus
                                     }
-                                    
                                 }
-                                
                             }
                         }
                     }
-                    
-                
                 }
-                
             }
             
             DispatchQueue.main.sync(execute: {
@@ -331,7 +326,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         
         
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -340,6 +335,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         self.uploadLabel.text = String(self.upload)
         self.ratioLabel.text = String(self.ratio)
         self.statsWheel.isHidden = true
+        
+        
         
         refreshControl.addTarget(self, action: #selector(self.checkLogIn), for: .valueChanged)
         scrollView.insertSubview(self.refreshControl, at: 0)
@@ -352,12 +349,14 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         checkLogIn()
+        
+        if !UserDefaults.standard.bool(forKey: "isLoggedIn") {
+            self.logIn()
+        } else {
+            self.refreshData()
+        }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 }
 

@@ -16,7 +16,6 @@
 		0380884E1DFFF5CC0022A36F /* actseed.png in Resources */ = {isa = PBXBuildFile; fileRef = 0380884D1DFFF5CC0022A36F /* actseed.png */; };
 		038088501DFFF5D10022A36F /* actleech.png in Resources */ = {isa = PBXBuildFile; fileRef = 0380884F1DFFF5D10022A36F /* actleech.png */; };
 		038088521E0007960022A36F /* BonusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038088511E0007960022A36F /* BonusViewController.swift */; };
-		03AB43551E01EB0D009462E4 /* BonusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB43541E01EB0D009462E4 /* BonusTableViewCell.swift */; };
 		03F24EEB1DFDEC9B001CDAE3 /* UICircularProgressRingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F24EE81DFDEC9B001CDAE3 /* UICircularProgressRingDelegate.swift */; };
 		03F24EEC1DFDEC9B001CDAE3 /* UICircularProgressRingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F24EE91DFDEC9B001CDAE3 /* UICircularProgressRingLayer.swift */; };
 		03F24EED1DFDEC9B001CDAE3 /* UICircularProgressRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F24EEA1DFDEC9B001CDAE3 /* UICircularProgressRingView.swift */; };
@@ -47,7 +46,6 @@
 		0380884D1DFFF5CC0022A36F /* actseed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = actseed.png; sourceTree = "<group>"; };
 		0380884F1DFFF5D10022A36F /* actleech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = actleech.png; sourceTree = "<group>"; };
 		038088511E0007960022A36F /* BonusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonusViewController.swift; sourceTree = "<group>"; };
-		03AB43541E01EB0D009462E4 /* BonusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonusTableViewCell.swift; sourceTree = "<group>"; };
 		03F24EE81DFDEC9B001CDAE3 /* UICircularProgressRingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularProgressRingDelegate.swift; sourceTree = "<group>"; };
 		03F24EE91DFDEC9B001CDAE3 /* UICircularProgressRingLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularProgressRingLayer.swift; sourceTree = "<group>"; };
 		03F24EEA1DFDEC9B001CDAE3 /* UICircularProgressRingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularProgressRingView.swift; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 				036B6CED1DF6056B008EB4CC /* ViewController.swift */,
 				036B6CEF1DF6056B008EB4CC /* Main.storyboard */,
 				038088511E0007960022A36F /* BonusViewController.swift */,
-				03AB43541E01EB0D009462E4 /* BonusTableViewCell.swift */,
 				036B6D291DF8257A008EB4CC /* LogInViewController.swift */,
 				036B6CF21DF6056B008EB4CC /* Assets.xcassets */,
 				036B6CF41DF6056B008EB4CC /* LaunchScreen.storyboard */,
@@ -182,7 +179,6 @@
 				03F24EEB1DFDEC9B001CDAE3 /* UICircularProgressRingDelegate.swift in Sources */,
 				036B6D2A1DF8257A008EB4CC /* LogInViewController.swift in Sources */,
 				03F24EED1DFDEC9B001CDAE3 /* UICircularProgressRingView.swift in Sources */,
-				03AB43551E01EB0D009462E4 /* BonusTableViewCell.swift in Sources */,
 				038088521E0007960022A36F /* BonusViewController.swift in Sources */,
 				03F24EEC1DFDEC9B001CDAE3 /* UICircularProgressRingLayer.swift in Sources */,
 			);
@@ -308,11 +304,11 @@
 		036B6CFB1DF6056B008EB4CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LFLBMCNJUD;
 				INFOPLIST_FILE = "HD-Space/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.erikslovak.HD-Space";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -324,11 +320,11 @@
 		036B6CFC1DF6056B008EB4CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LFLBMCNJUD;
 				INFOPLIST_FILE = "HD-Space/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.erikslovak.HD-Space";
 				PRODUCT_NAME = "$(TARGET_NAME)";
