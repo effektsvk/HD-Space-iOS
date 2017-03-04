@@ -29,6 +29,10 @@ http://hd-space.yourepo.com/
 - ~~App crashes when you have 0 active torrents~~ (Fixed)
 - App crashes when HD-Space is down
 - ~~App doesn't update upload and download stats when there's a comma (e.g. 1,004.20 GB)~~ (Fixed)
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 
 ---
 # Screenshots
