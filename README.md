@@ -32,5 +32,5 @@ http://hd-space.yourepo.com/
 
 ---
 # Screenshots
-<div align="center"><img src="media/Screenshot1.png" width="512"></div>
-<div align="center"><img src="media/Screenshot2.png" width="512"></div>
+<div align="center"><img src="media/Screenshot1.jpg" width="512"></div>
+<div align="center"><img src="media/Screenshot2.jpg" width="512"></div>
